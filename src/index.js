@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import App from './containers/index.js';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
-import RouteMap from './router/routeMap';
 import { testFetch } from './fetch/test.js';
 
 // 创建 Redux 的 store 对象
@@ -13,7 +14,9 @@ testFetch();
 
 ReactDOM.render(
   <Provider store={ store }>
-    <RouteMap />
+    <Router>
+      <Route path='/' component={App} />
+    </Router>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

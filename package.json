@@ -1,4 +1,10 @@
 {
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001",
+      "ws": true
+    }
+  },
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +22,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "mock": "node --harmony ./mock/server.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "koa": "^1.2.2",
+    "koa-router": "^5.4.0"
   }
 }

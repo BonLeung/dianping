@@ -7,6 +7,7 @@ import User from './User';
 import Search from './Search';
 import Detail from './Detail';
 import NotFound from './404';
+import { getAdData } from '../fetch/home/home.js'
 
 // 如果是大型项目，router 部分就需要做更加复杂的配置
 // 参见 https://github.com/reacths/react-router/tree/master/examples/huge-apps
@@ -29,6 +30,14 @@ class App extends React.Component {
         </Switch>
       </div>
     );
+  }
+  componentDidMount() {
+    let data = getAdData();
+    data.then(res => {
+      return res.json();
+    }).then(json => {
+      console.log(json);
+    })
   }
 }
 

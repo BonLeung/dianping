@@ -7,6 +7,9 @@ import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import { testFetch } from './fetch/test.js';
 
+import './static/css/common.less';
+import './static/css/font.css';
+
 // 创建 Redux 的 store 对象
 const store = configureStore();
 

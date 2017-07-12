@@ -20,18 +20,27 @@ class App extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = {
+      initDone: false
+    }
   }
   render() {
     return (
       <div>
-        <Switch>
-          <Route exact path='/' component={ Home } />
-          <Route path='/city' component={ City } />
-          <Route path='/user' component={ User } />
-          <Route path='/search/:type(/:keyword)' component={ Search } />
-          <Route path='/detail/:id' component={ Detail } />
-          <Route path='*' component={ NotFound } />
-        </Switch>
+        {
+          this.state.initDone ?
+          <Switch>
+            <Route exact path='/' component={ Home } />
+            <Route path='/city' component={ City } />
+            <Route path='/user' component={ User } />
+            <Route path='/search/:type(/:keyword)' component={ Search } />
+            <Route path='/detail/:id' component={ Detail } />
+            <Route path='*' component={ NotFound } />
+          </Switch>
+          :
+          <div>正在加载...</div>
+        }
+
       </div>
     );
   }
@@ -39,11 +48,14 @@ class App extends React.Component {
     // 从 localstorage 里面获取城市
     let cityName = localStore.getItem(CITYNAME);
     if (cityName == null) {
-      cityName = '北京';
+      cityName = '深圳';
     }
     this.props.userinfoActions.update({
       cityName: cityName
     });
+    this.setState({
+      initDone: true
+    })
   }
 }
 

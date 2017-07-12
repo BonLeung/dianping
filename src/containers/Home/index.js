@@ -1,8 +1,10 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import Category from './SubPage/Category';
+import Category from '../../components/Category';
 import HomeHeader from '../../components/HomeHeader';
+import Advertise from './subpage/Advertise';
 import { connect } from 'react-redux';
+import { getAdData } from '../../fetch/home/home';
 
 class Home extends React.Component {
   constructor(props, context) {
@@ -13,8 +15,18 @@ class Home extends React.Component {
     return (
       <div>
         <HomeHeader cityName={this.props.userinfo.cityName} />
+        <Category />
+        <Advertise />
       </div>
     );
+  }
+  componentDidMount() {
+    var response = getAdData();
+    response.then(data => {
+      return data.json();
+    }).then(json => {
+      console.log(json);
+    })
   }
 }
 

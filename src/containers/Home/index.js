@@ -1,5 +1,10 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Category from '../../components/Category';
+import HomeHeader from '../../components/HomeHeader';
+import Advertise from './subpage/Advertise';
+import List from './subpage/List';
+import { connect } from 'react-redux';
 
 class Home extends React.Component {
   constructor(props, context) {
@@ -8,9 +13,34 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div> hello world</div>
+      <div>
+        <HomeHeader cityName={this.props.userinfo.cityName} />
+        <Category />
+        <div style={{height: "16px"}}></div>
+        <Advertise />
+        <List />
+      </div>
     );
+  }
+  componentDidMount() {
+
   }
 }
 
-export default Home;
+// ----------------------- redux  react 绑定 -------------------
+function mapStateToProps(state) {
+  return {
+    userinfo: state.userinfo
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

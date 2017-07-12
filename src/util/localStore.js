@@ -2,9 +2,9 @@ export default {
   getItem: function(key) {
     let value;
     try {
-      value = localStore.getItem(key);
+      value = localStorage.getItem(key);
     } catch (e) {
-      if (__DEV__) {
+      if (process.env.NODE_ENV === 'development') {
         console.error('localStorage.getItem报错，', e.message);
       }
     } finally {
@@ -17,9 +17,9 @@ export default {
       localStorage.setItem(key, value);
     } catch (e) {
       // 开发环境下提示 error
-      if (__DEV__) {
+      if (process.env.NODE_ENV === 'development') {
         console.error('localStorage.setItem报错，', e.message);
       }
     }
   }
-}
+};

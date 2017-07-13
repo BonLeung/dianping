@@ -24,24 +24,27 @@ class LoadMore extends React.Component {
     this.props.loadMoreHandler();
   }
   componentDidMount() {
-    const loadMore = this.props.loadMoreHandler;
     let timeoutId;
-    window.addEventListener('scroll', function() {
+    const loadMoreHandler = this.props.loadMoreHandler;
+    const loadMoreDOM = this.refs.loadMore;
+    window.addEventListener('scroll', () => {
       if (this.props.isLoadingMore) {
         return;
       }
-      console.log(123);
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
       timeoutId = setTimeout(() => {
-        const top = this.refs.loadMore.getBoundingClientRect().top;
+        const top = loadMoreDOM.getBoundingClientRect().top;
         const windowHeight = window.screen.height;
         if (top && top < windowHeight) {
-          loadMore();
+          loadMoreHandler();
         }
       }, 100)
-    }.bind(this), false)
+    }, false)
+  }
+  componentWillDestroy() {
+    window.removeEventListener('scroll');
   }
 }
 

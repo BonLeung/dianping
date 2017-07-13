@@ -14,7 +14,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <HomeHeader cityName={this.props.userinfo.cityName} />
+        <HomeHeader cityName={this.props.userinfo.cityName} handleSearch={this.handleSearch.bind(this)} />
         <Category />
         <div style={{height: "16px"}}></div>
         <Advertise />
@@ -22,8 +22,8 @@ class Home extends React.Component {
       </div>
     );
   }
-  componentDidMount() {
-
+  handleSearch(keyword) {
+    this.props.history.push('/search/all/' + keyword);
   }
 }
 

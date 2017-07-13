@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Link } from 'react-router-dom';
+import SearchInput from '../SearchInput';
 
 import './style.less';
 
@@ -28,6 +29,7 @@ class HomeHeader extends React.Component {
           <div className="search-container">
             <i className="icon-search"></i>
           &nbsp;
+            <SearchInput handleSearch={this.props.handleSearch.bind(this)} />
           </div>
         </div>
       </div>

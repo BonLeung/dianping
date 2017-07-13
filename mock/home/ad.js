@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: '暑假5折11',
+        title: '暑假5折',
         img: '../../../static/images/138012-20161016191639092-2000037796.png',
         link: 'http://www.imooc.com/wap/index'
     },

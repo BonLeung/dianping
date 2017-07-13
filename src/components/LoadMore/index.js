@@ -30,7 +30,6 @@ class LoadMore extends React.Component {
       if (this.props.isLoadingMore) {
         return;
       }
-      console.log(123);
       if (timeoutId) {
         clearTimeout(timeoutId);
       }

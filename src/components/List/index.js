@@ -8,9 +8,6 @@ class ListComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = {
-
-    };
   }
   render () {
     return (

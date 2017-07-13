@@ -13,6 +13,10 @@ import { CITYNAME } from '../../config/localStoreKey';
 import localStore from '../../util/localStore';
 
 class City extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  }
   render() {
     return (
       <div>

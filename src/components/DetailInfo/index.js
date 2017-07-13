@@ -16,7 +16,7 @@ class DetailInfo extends React.Component {
       <div id="detail-info-container">
         <div className="info-container clear-fix">
           <div className="info-img-container float-left">
-            <img src={info.img} />
+            <img src={info.img} alt={info.title} />
           </div>
           <div className="info-content">
             <h1>{info.title}</h1>

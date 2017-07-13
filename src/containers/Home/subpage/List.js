@@ -64,7 +64,7 @@ class List extends React.Component {
         currentPage: currentPage + 1,
         isLoadingMore: false
       })
-    }, 1000)
+    }, 10)
   }
   // 数据处理
   resultHandle(result) {

@@ -26,7 +26,7 @@ class Info extends React.Component {
   }
   componentDidMount() {
     const id = this.props.id;
-    const result = getInfoData();
+    const result = getInfoData(id);
     result.then(response => {
       return response.json();
     }).then(json => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home';
 import City from './City';
 import User from './User';
+import Login from './Login';
 import Search from './Search';
 import Detail from './Detail';
 import NotFound from './404';
@@ -25,6 +26,14 @@ class App extends React.Component {
     };
   }
   render() {
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render = {props => (
+        this.props.userinfo.username ?
+        (<Component {...props} />)
+        :
+        (<Redirect to={{pathname: '/login', state: {from: props.location}}} />)
+      )} />
+    );
     return (
       <div>
         {
@@ -32,7 +41,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={ Home } />
             <Route path='/city' component={ City } />
-            <Route path='/user' component={ User } />
+            <Route path='/login' component={ Login } />
+            <PrivateRoute path='/user/:router?' component={ User } />
             <Route path='/search/:category/:keyword?' component={ Search } />
             <Route path='/detail/:id' component={ Detail } />
             <Route component={ NotFound } />
@@ -61,7 +71,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-
+    userinfo: state.userinfo
   }
 }
 

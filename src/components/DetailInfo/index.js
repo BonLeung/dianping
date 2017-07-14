@@ -16,14 +16,11 @@ class DetailInfo extends React.Component {
       <div id="detail-info-container">
         <div className="info-container clear-fix">
           <div className="info-img-container float-left">
-            <img src={info.img} alt={info.title} />
+            <img src={process.env.PUBLIC_URL + info.img} alt={info.title} />
           </div>
           <div className="info-content">
             <h1>{info.title}</h1>
             <div className="star-container">
-              {
-                // TODO: 引入 star 组件
-              }
               <Star star={info.star} />
             </div>
             <p className="sub-title">{info.subTitle}</p>

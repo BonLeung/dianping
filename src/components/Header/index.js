@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import { withRouter } from 'react-router-dom';
 
 import './style.less';
 
@@ -19,8 +20,13 @@ class Header extends React.Component {
     )
   }
   clickHandler() {
-    window.history.back();
+    const router = this.props.backRouter;
+    if (router) {
+      this.props.history.push(router);
+    } else {
+      window.history.back();
+    }
   }
 }
 
-export default Header;
+export default withRouter(Header);

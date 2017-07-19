@@ -41,8 +41,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={ Home } />
             <Route path='/city' component={ City } />
-            <Route path='/login' component={ Login } />
-            <PrivateRoute path='/user/:router?' component={ User } />
+            <Route path='/login/:router?' component={ Login } />
+            <PrivateRoute path='/user' component={ User } />
             <Route path='/search/:category/:keyword?' component={ Search } />
             <Route path='/detail/:id' component={ Detail } />
             <Route component={ NotFound } />

@@ -18,7 +18,7 @@ class Login extends React.Component {
     };
   }
   render() {
-    const { from } = this.props.location.state || { from: { path: '/' }};
+    const { from } = this.props.location.state || { from: { pathname: '/' }};
     if (this.props.userinfo.username) {
       return (
         <Redirect to={from} />
@@ -57,10 +57,10 @@ class Login extends React.Component {
     const userinfo = this.props.userinfo;
     userinfo.username = this.state.username;
     userinfoActions.update(userinfo);
-
+    console.log(this.props);
     const router = this.props.match.params.router;
     if (router) {
-      this.props.history.push(router);
+      this.props.history.push(decodeURIComponent(router));
     } else {
       this.props.history.push('/user');
     }

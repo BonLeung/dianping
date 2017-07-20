@@ -15,7 +15,7 @@ class ListItem extends React.Component {
       <div className="list-item clear-fix">
         <Link to={'/detail/' + data.id}>
           <div className="item-img-container float-left">
-            <img src={data.img} alt={data.title} />
+            <img src={process.env.PUBLIC_URL + data.img} alt={data.title} />
           </div>
           <div className="item-content">
             <div className="item-title-container">

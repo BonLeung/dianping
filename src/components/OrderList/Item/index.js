@@ -20,7 +20,7 @@ class Item extends React.Component {
       <div className="order-item-container">
         <div className="clear-fix">
           <div className="order-item-img float-left">
-            <img src={data.img} />
+            <img src={process.env.PUBLIC_URL + data.img} />
           </div>
           <div className="order-item-comment float-right">
             {
